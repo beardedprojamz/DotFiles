@@ -1,0 +1,14 @@
+# Mac
+.DS_Store
+
+# Python
+*.pyc
+.python-version
+__pycache__
+
+# Node/Yarn
+node_modules
+.yarnclean
+
+# direnv
+.envrc

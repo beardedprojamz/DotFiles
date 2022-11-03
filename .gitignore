@@ -1,0 +1,12 @@
+.config/zsh/custom
+.local/bin/*
+!.local/bin/macsimus.sh
+!.local/bin/docker-nuke.sh
+!.local/bin/wsly.sh
+
+# WSL setup files
+get_helm.sh
+kubeseal*
+kustomize*
+argo*
+vegeta*

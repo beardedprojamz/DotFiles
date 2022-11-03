@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+# Ensure there's a place for source code
+REPO_DIR="$HOME/Repos"
+[ ! -d $REPO_DIR ] && mkdir $REPO_DIR
+
+if [[ ! $(zsh --version) ]]; then
+  sudo apt update
+
+  echo "Installing latest zsh & z'goodies..."
+  sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting
+  chsh -s /usr/bin/zsh
+
+  echo "Installing sudo apt packages"
+
+  # Languages
+  # nvm
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+  # pyenv
+  curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+  # python build deps
+  sudo apt install make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+  # terraform
+  wget -O- https://sudo apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://sudo apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/sudo apt/sources.list.d/hashicorp.list
+  sudo apt update && sudo apt install terraform
+
+  # Tools
+  sudo apt install direnv exa fd-find gh git-crypt hugo jq nmap ripgrep stow unzip
+
+  # AWS CLI v2
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  sudo ./aws/install
+  rm -rf ./aws
+
+  # Kubernetes
+  curl -LO https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
+  chmod +x ./kubectl
+  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  rm kubectl
+
+  # Helm
+  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+  chmod 700 get_helm.sh
+  ./get_helm.sh
+  rm -rf get_helm.sh
+
+  # Kubeseal
+  wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.18.0/kubeseal-0.18.0-linux-amd64.tar.gz
+  mkdir kubeseal-temp
+  tar xfz kubeseal-0.18.0-linux-amd64.tar.gz -C kubeseal-temp
+  sudo install -m 755 kubeseal-temp/kubeseal /usr/local/bin/kubeseal
+  rm -rf kubeseal*
+
+  # Kustomize
+  curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+  sudo install -m 755 kustomize /usr/local/bin/kustomize
+  rm -rf kustomize*
+
+  # Argo CD
+  curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+  sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+  rm argocd-linux-amd64
+
+  # Argo Rollouts
+  curl -LO https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64
+  sudo install -m 555 kubectl-argo-rollouts-linux-amd64 /usr/local/bin/kubectl-argo-rollouts
+  rm kubectl-argo-rollouts-linux-amd64
+
+  # Vegeta
+  VEGETA_VERSION=$(curl -s "https://api.github.com/repos/tsenart/vegeta/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+  curl -Lo vegeta.tar.gz "https://github.com/tsenart/vegeta/releases/latest/download/vegeta_${VEGETA_VERSION}_linux_amd64.tar.gz"
+  mkdir vegeta-temp
+  tar xf vegeta.tar.gz -C vegeta-temp
+  install -m 755 vegeta-temp/vegeta /usr/local/bin/vegeta
+  rm -rf vegeta*
+
+  # yq
+  wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64.tar.gz
+  mkdir yq-temp
+  tar xf yq_linux_amd64.tar.gz -C yq-temp
+  install -m 755 yq-temp/yq_linux_amd64 /usr/local/bin/yq
+  rm -rf yq*
+
+  # Python
+  echo "Installing global python tools"
+  pyenv install 3.10
+  pyenv global 3.10
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  pip install --upgrade pip
+  pip install black flake8 pipenv
+
+  echo "Installing global npms"
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/opt/nvm/nvm.sh"
+  nvm install 16
+  npm install -g aws-cdk eslint firebase-tools npm-check-updates prettier yarn
+
+  echo "Stowing files"
+  mkdir ~/.local ~/.config
+  stow -t ~ .
+
+  echo "GitHub CLI login"
+  gh auth login
+else
+  sudo apt update
+  sudo apt upgrade
+fi

@@ -1,0 +1,9 @@
+.DS_Store
+README.md
+\.git
+\.gitignore
+.vscode
+Automator
+clamav
+.zprofile
+.gitconfig
