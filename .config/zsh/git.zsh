@@ -23,7 +23,6 @@ alias ga="git add"
 alias gb="git branch"
 alias gba="git branch --all"
 alias gbd="git branch -D"
-alias gbu="git branch --set-upstream-to="
 alias gc="git commit"
 alias gca="git commit -a"
 alias gcan!="git commit -a --amend --no-edit"
@@ -47,6 +46,11 @@ alias grbc="git rebase --continue"
 alias grh="git reset HEAD^ --soft"
 alias grs="git restore --staged ."
 alias gst="git status"
+
+function gbu() {
+  git branch --set-upstream-to=$1
+}
+compdef _git gbu=git-checkout
 
 function gsmash() {
   git commit -a --no-edit --amend
