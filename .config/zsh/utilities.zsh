@@ -4,9 +4,8 @@ function drsh() {
   docker run -it --rm -v $(pwd):/code -w /code $1 /bin/sh
 }
 
-functions acm-ls-certs() {
-  for region in $(ec2-regions)
-  do
+function acm-ls-certs() {
+  for region in $(ec2-regions); do
     echo $region
     echo "\n$(aws --region $region acm list-certificates | jq -r '.CertificateSummaryList[]')\n"
   done
@@ -22,6 +21,10 @@ function ec2-regions() {
 
 function ecs-task-sh() {
   aws ecs execute-command --region "$AWS_REGION" --cluster "$1" --task "$2" --command "/bin/sh" --interactive
+}
+
+function gpg-encrypt-file() {
+  gpg --encrypt --sign --armor -r $1 $2
 }
 
 function kb-decrypt() {
