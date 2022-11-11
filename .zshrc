@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# history
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=100000
+export SAVEHIST=100000
+
 # keybindings
 bindkey -e
 bindkey "^[[H" beginning-of-line
