@@ -19,6 +19,9 @@ setopt auto_cd
 
 # source z'goodies
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
+  # extra keybindings for win/linux compat
+  bindkey "^[[3;5~" kill-word
+  bindkey "^?" backward-kill-word
   source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
