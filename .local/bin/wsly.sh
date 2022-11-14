@@ -36,6 +36,11 @@ if [[ ! $(zsh --version) ]]; then
   sudo ./aws/install
   rm -rf ./aws
 
+  # AWS Session Manager
+  curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+  sudo dpkg -i session-manager-plugin.deb
+  rm session-manager-plugin.deb
+
   # Kubernetes
   curl -LO https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
   chmod +x ./kubectl
