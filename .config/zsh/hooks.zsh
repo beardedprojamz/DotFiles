@@ -1,11 +1,20 @@
 #!/usr/bin/env zsh
 
-# nvm
 if [[ -v $HOMEBREW_PREFIX ]]; then
+  # nvm
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+  # aws
+  complete -C $HOMEBREW_PREFIX/bin/aws_completer aws
+  # terraform
+  complete -o nospace -C $HOMEBREW_PREFIX/bin/terraform terraform
 else
+  # nvm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  # aws
+  complete -C /usr/local/bin/aws_completer aws
+  # terraform
+  complete -o nospace -C /usr/bin/terraform terraform
 fi
 
 # pyenv
@@ -17,5 +26,3 @@ if type kubectl >/dev/null; then
   source <(kubectl completion zsh)
   source <(kubectl-argo-rollouts completion zsh)
 fi
-# terraform
-complete -o nospace -C $HOMEBREW_PREFIX/bin/terraform terraform
