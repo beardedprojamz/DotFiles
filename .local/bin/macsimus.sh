@@ -54,9 +54,9 @@ if [[ ! $(brew --version) ]]; then
 
   echo "Installing casks"
   brew install --cask \
-    confluent-cli docker figma flycut font-hack google-chrome google-drive imageoptim \
-    keepingyouawake keybase logitech-options macsvg mongodb-compass pgadmin4 postman \
-    session-manager-plugin slack sequel-ace visual-studio-code zoom
+    beekeeper-studio confluent-cli docker figma flycut font-cascadia-code google-chrome google-drive \
+    imageoptim keepingyouawake keybase logitech-options macsvg microsoft-edge mongodb-compass \
+    postman onedrive session-manager-plugin slack visual-studio-code zoom
 
   echo "Installing global python tools"
   pyenv install 3.10.4
