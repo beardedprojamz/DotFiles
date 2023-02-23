@@ -11,6 +11,10 @@ function acm-ls-certs() {
   done
 }
 
+function aws-whoami() {
+  aws sts get-caller-identity
+}
+
 function ec2-network-check() {
   aws ec2 describe-network-interfaces --filters Name=$1,Values=$2 --output json
 }
