@@ -29,6 +29,8 @@ if [[ ! $(brew --version) ]]; then
 
   # Languages
   brew install nvm pyenv terraform
+  brew install dotnet@6
+  brew link dotnet@6 --force
 
   # Tools
   brew install awscli clamav direnv exa fd gh git git-crypt gpgme hugo jq netcat nmap ripgrep stow telnet vegeta yq

@@ -15,8 +15,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
+# dotnet
+export DOTNET_ROOT="/usr/local/opt/dotnet@6/libexec"
+
 # Directories
-export PATH="node_modules/.bin:$HOME/.local/bin:$HOME/.krew/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:node_modules/.bin:$HOME/.local/bin:$HOME/.krew/bin:$HOME/.dotnet/tools:/usr/local/opt/dotnet@6/bin:$PATH"
 export REPO_DIR="$HOME/Repos"
 
 # ZSH setup locations
