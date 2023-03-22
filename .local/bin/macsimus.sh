@@ -56,8 +56,8 @@ if [[ ! $(brew --version) ]]; then
 
   echo "Installing casks"
   brew install --cask \
-    beekeeper-studio confluent-cli docker figma flycut font-cascadia-code google-chrome google-drive \
-    imageoptim keepingyouawake keybase logitech-options macsvg microsoft-edge mongodb-compass \
+    beekeeper-studio confluent-cli docker figma flycut font-cascadia-code gimp google-chrome \
+    google-drive keepingyouawake keybase logitech-options microsoft-edge mongodb-compass \
     postman onedrive session-manager-plugin slack visual-studio-code zoom
 
   echo "Installing global python tools"
