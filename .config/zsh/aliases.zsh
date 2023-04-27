@@ -27,6 +27,9 @@ alias kxu="kubectl config use-context"
 alias kxs="kubectl config set-context"
 alias kmon="kubectl -n monitoring"
 
+# node
+alias nr="npm run"
+
 # terraform
 alias tf="terraform"
 alias tf-gitlab-init="terraform init -backend-config=config.http.tfbackend -backend-config=\"username=deybhayden\" -backend-config=\"password=$GITLAB_TOKEN\""
