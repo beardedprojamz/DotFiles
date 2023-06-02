@@ -15,6 +15,13 @@ else
   complete -C /usr/local/bin/aws_completer aws
   # terraform
   complete -o nospace -C /usr/bin/terraform terraform
+  # pnpm
+  export PNPM_HOME="/home/ben/.local/share/pnpm"
+  case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  # pnpm end
 fi
 
 # pyenv
