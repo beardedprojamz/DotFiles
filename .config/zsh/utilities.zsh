@@ -32,7 +32,7 @@ function gpg-encrypt-file() {
 }
 
 function kb-decrypt() {
-  echo $1 | base64 --decode | keybase pgp decrypt | pbcopy
+  echo $1 | base64 --decode | keybase pgp decrypt
 }
 
 function kc-run-ubuntu() {
@@ -45,4 +45,8 @@ function myip-ingress() {
 
 function pip-clean() {
   pip freeze | xargs pip uninstall -y
+}
+
+function zulu() {
+  date -u +"%Y-%m-%dT%H:%M:%SZ" | tr -d "\n"
 }
