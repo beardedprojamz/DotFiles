@@ -21,8 +21,9 @@ alias dex="docker exec -it"
 
 # kubernetes
 alias kc="kubectl"
+alias kctx="kubectl-ctx"
+alias kns="kubectl-ns"
 alias kargo="kubectl -n argocd"
-alias kx="kubectl config get-contexts"
 alias kxu="kubectl config use-context"
 alias kxs="kubectl config set-context"
 alias kmon="kubectl -n monitoring"
