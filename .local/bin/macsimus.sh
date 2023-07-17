@@ -33,7 +33,7 @@ if [[ ! $(brew --version) ]]; then
   brew link dotnet@6 --force
 
   # Tools
-  brew install awscli clamav direnv exa fd gh git git-crypt gpgme hugo jq netcat nmap ripgrep stow telnet vegeta yq
+  brew install awscli clamav direnv exa fd fzf gh git git-crypt gpgme hugo jq netcat nmap ripgrep stow telnet vegeta yq
 
   # Kubernetes
   brew install argo argocd helm kubeseal kustomize

@@ -28,7 +28,7 @@ if [[ ! $(zsh --version) ]]; then
   sudo apt update && sudo apt install terraform
 
   # Tools
-  sudo apt install direnv exa fd-find gh git-crypt hugo jq nmap ntpdate ripgrep stow unzip zip
+  sudo apt install direnv exa fd-find fzf gh git-crypt hugo jq nmap ntpdate ripgrep stow unzip zip
 
   # AWS CLI v2
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
