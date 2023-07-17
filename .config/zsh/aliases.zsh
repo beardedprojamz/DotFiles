@@ -27,6 +27,9 @@ alias kargo="kubectl -n argocd"
 alias kxu="kubectl config use-context"
 alias kxs="kubectl config set-context"
 alias kmon="kubectl -n monitoring"
+alias krew="kubectl-krew"
+alias kroll="kubectl-argo-rollouts"
+alias stern="kubectl-stern"
 
 # node
 alias nr="npm run"
