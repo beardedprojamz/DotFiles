@@ -41,6 +41,11 @@ if [[ ! $(zsh --version) ]]; then
   sudo dpkg -i session-manager-plugin.deb
   rm session-manager-plugin.deb
 
+  # aws-sso-cli
+  curl "https://github.com/synfinatic/aws-sso-cli/releases/download/v1.9.10/aws-sso-cli_1.9.10-1_amd64.deb" -o "aws-sso-cli.deb"
+  sudo dpkg -i aws-sso-cli.deb
+  rm aws-sso-cli.deb
+
   # Kubernetes
   curl -LO https://dl.k8s.io/release/v1.25.0/bin/linux/amd64/kubectl
   chmod +x ./kubectl
