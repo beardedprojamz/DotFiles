@@ -33,3 +33,6 @@ if type kubectl >/dev/null; then
   source <(kubectl completion zsh)
   source <(kubectl-argo-rollouts completion zsh)
 fi
+
+# Final path setup
+export PATH="node_modules/.bin:$HOME/.local/bin:$HOME/.krew/bin:$PATH"
