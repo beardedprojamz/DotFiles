@@ -13,7 +13,6 @@ export BITBUCKET_TOKEN="<REPLACE_ME>"
 export NVM_DIR="$HOME/.nvm"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Directories
 export REPO_DIR="$HOME/Repos"

@@ -25,9 +25,15 @@ else
 fi
 
 # pyenv
-eval "$(pyenv init -)"
+if [ -z $PIPENV_ACTIVE ]; then
+  # only init pyenv if pipenv is not active
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
 # direnv
 eval "$(direnv hook zsh)"
+
 # kubernetes
 if type kubectl >/dev/null; then
   source <(kubectl completion zsh)
