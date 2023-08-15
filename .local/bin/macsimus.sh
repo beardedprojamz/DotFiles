@@ -72,7 +72,7 @@ if [[ ! $(brew --version) ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
   nvm install 16
-  npm install -g aws-cdk eslint firebase-tools npm-check-updates prettier yarn
+  npm install -g @aws-amplify/cli aws-cdk eslint npm-check-updates prettier yarn
 
   echo "Stowing files"
   mkdir -p .local .config
