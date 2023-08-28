@@ -121,8 +121,8 @@ if [[ ! $(zsh --version) ]]; then
   echo "Installing global npms"
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/opt/nvm/nvm.sh"
-  nvm install 16
-  npm install -g @aws-amplify/cli aws-cdk eslint npm-check-updates prettier yarn
+  nvm install 18
+  npm install -g @aws-amplify/cli @funboxteam/optimizt aws-cdk aws-sso-creds-helper eslint npm-check-updates prettier serverless
 
   echo "Stowing files"
   mkdir ~/.local ~/.config
