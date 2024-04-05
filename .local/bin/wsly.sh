@@ -122,7 +122,7 @@ if [[ ! $(zsh --version) ]]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/opt/nvm/nvm.sh"
   nvm install 18
-  npm install -g @aws-amplify/cli @funboxteam/optimizt aws-cdk aws-sso-creds-helper eslint npm-check-updates prettier serverless
+  npm install -g @aws-amplify/cli aws-cdk aws-sso-creds-helper corepack eslint firebase-tools pnpm npm-check-updates prettier serverless
 
   echo "Stowing files"
   mkdir ~/.local ~/.config
