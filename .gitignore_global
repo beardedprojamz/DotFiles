@@ -9,6 +9,7 @@ __pycache__
 # Node/Yarn
 node_modules
 .yarnclean
+.nvmrc
 
 # direnv
 .envrc
