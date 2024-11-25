@@ -11,10 +11,10 @@ alias htop="sudo htop"
 alias src='source "$HOME/.zshrc"'
 
 # ls
-alias ls="exa"
-alias sl="exa"
-alias ll="exa --long --all"
-alias lt="exa --long --tree --level=3 --color=always | less -R"
+alias ls="eza"
+alias sl="eza"
+alias ll="eza --long --all"
+alias lt="eza --long --tree --level=3 --color=always | less -R"
 
 # docker
 alias dex="docker exec -it"

@@ -28,13 +28,13 @@ if [[ ! $(zsh --version) ]]; then
   sudo apt update && sudo apt install terraform
 
   # Tools
-  sudo apt install direnv exa fd-find fzf gh git-crypt hugo jq nmap ntpdate ripgrep stow unzip zip
+  sudo apt install direnv eza fd-find fzf gh git-crypt hugo jq nmap ntpdate ripgrep stow unzip wslu xdg-utils zip
 
   # AWS CLI v2
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
   unzip awscliv2.zip
   sudo ./aws/install
-  rm -rf ./aws
+  rm -rf ./aws awscli2.zip
 
   # AWS Session Manager
   curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
@@ -98,15 +98,21 @@ if [[ ! $(zsh --version) ]]; then
   curl -Lo vegeta.tar.gz "https://github.com/tsenart/vegeta/releases/latest/download/vegeta_${VEGETA_VERSION}_linux_amd64.tar.gz"
   mkdir vegeta-temp
   tar xf vegeta.tar.gz -C vegeta-temp
-  install -m 755 vegeta-temp/vegeta /usr/local/bin/vegeta
+  sudo install -m 755 vegeta-temp/vegeta /usr/local/bin/vegeta
   rm -rf vegeta*
 
   # yq
   wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64.tar.gz
   mkdir yq-temp
   tar xf yq_linux_amd64.tar.gz -C yq-temp
-  install -m 755 yq-temp/yq_linux_amd64 /usr/local/bin/yq
+  sudo install -m 755 yq-temp/yq_linux_amd64 /usr/local/bin/yq
   rm -rf yq*
+
+  echo "Stowing files"
+  mkdir ~/.local ~/.config
+  stow -t ~ .
+
+  source ~/.zshrc
 
   # Python
   echo "Installing global python tools"
@@ -121,17 +127,13 @@ if [[ ! $(zsh --version) ]]; then
   # Node
   echo "Installing global npms"
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/opt/nvm/nvm.sh"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   nvm install 18
   npm install -g @aws-amplify/cli aws-cdk aws-sso-creds-helper corepack eslint firebase-tools pnpm npm-check-updates prettier serverless
 
   # Deno
   curl -fsSL https://deno.land/install.sh | sh
   export DENO_INSTALL="/home/$(whoami)/.deno"
-
-  echo "Stowing files"
-  mkdir ~/.local ~/.config
-  stow -t ~ .
 
   echo "GitHub CLI login"
   gh auth login

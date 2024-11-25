@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/ben/.zsh/completions:"* ]]; then export FPATH="/home/ben/.zsh/completions:$FPATH"; fi
 #!/usr/bin/env zsh
 
 # history
@@ -50,3 +52,4 @@ setopt prompt_subst
 
 # config for prompt
 prompt='%B%F{blue}%1/%f%b %F{green}$(git_prompt_branch)%f$ '
+. "/home/ben/.deno/env"
