@@ -25,7 +25,7 @@ else
 fi
 
 # pyenv
-if [ -z $PIPENV_ACTIVE ]; then
+if [ -z "$PIPENV_ACTIVE" ] && [ -z "$POETRY_ACTIVE" ]; then
   # only init pyenv if pipenv is not active
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
