@@ -116,8 +116,8 @@ if [[ ! $(zsh --version) ]]; then
 
   # Python
   echo "Installing global python tools"
-  pyenv install 3.10
-  pyenv global 3.10
+  pyenv install 3.12
+  pyenv global 3.12
   export PYENV_ROOT="$HOME/.pyenv"
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
@@ -128,7 +128,9 @@ if [[ ! $(zsh --version) ]]; then
   echo "Installing global npms"
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  nvm install 18
+  nvm install lts/iron
+  nvm alias default lts/iron
+  nvm use default
   npm install -g @aws-amplify/cli aws-cdk aws-sso-creds-helper corepack eslint firebase-tools pnpm npm-check-updates prettier serverless
 
   # Deno

@@ -61,8 +61,8 @@ if [[ ! $(brew --version) ]]; then
     postman onedrive session-manager-plugin slack visual-studio-code zoom
 
   echo "Installing global python tools"
-  pyenv install 3.10.8
-  pyenv global 3.10.8
+  pyenv install 3.12
+  pyenv global 3.12
   export PYENV_ROOT="$HOME/.pyenv"
   eval "$(pyenv init --path)"
   pip install --upgrade pip
@@ -71,7 +71,9 @@ if [[ ! $(brew --version) ]]; then
   echo "Installing global npms"
   export NVM_DIR="$HOME/.nvm"
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-  nvm install 18
+  nvm install lts/iron
+  nvm alias default lts/iron
+  nvm use default
   npm install -g @aws-amplify/cli aws-cdk aws-sso-creds-helper corepack eslint firebase-tools pnpm npm-check-updates prettier serverless
 
   echo "Stowing files"
