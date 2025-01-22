@@ -38,7 +38,7 @@ autoload -U +X bashcompinit && bashcompinit
 for zfile in "${ZSH:-$HOME/.config/zsh}"/*.zsh; do
   source "$zfile"
 done
-ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.config/zsh/custom}"
+export ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.config/zsh/custom}"
 if [[ -d $ZSH_CUSTOM ]]; then
   for zfile in "$ZSH_CUSTOM"/*.zsh; do
     source "$zfile"
